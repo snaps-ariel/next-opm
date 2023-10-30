@@ -3,7 +3,6 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import ReduxProvider from "@/redux/provider";
 import { Suspense } from "react";
 import Navbar from "@/components/layout/navbar";
 
@@ -31,14 +30,12 @@ export default function RootLayout({
       {/*  sizes="any"*/}
       {/*/>*/}
       <body className={inter.className}>
-        <ReduxProvider>
+        <Suspense>
+          <Navbar />
           <Suspense>
-            <Navbar />
-            <Suspense>
-              <main>{children}</main>
-            </Suspense>
+            <main>{children}</main>
           </Suspense>
-        </ReduxProvider>
+        </Suspense>
       </body>
     </html>
   );
